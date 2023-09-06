@@ -3,38 +3,10 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages:
-- completed:
-    hackage: distributed-process-0.7.4@sha256:9e43cb9a27e976e3e4c054e783bdfbd6140760e70997448da66993f4674a6409,7577
-    pantry-tree:
-      size: 3102
-      sha256: a558e988e6deba25d0667d8f6fd2705c0f7f36292b1afaa5442bd34a9cdf817c
-  original:
-    hackage: distributed-process-0.7.4@sha256:9e43cb9a27e976e3e4c054e783bdfbd6140760e70997448da66993f4674a6409,7577
-- completed:
-    hackage: distributed-process-simplelocalnet-0.2.4@sha256:044a003f81a648f9fb9b1c7ae9cd8f753f5f1c32d9db5ff8b31e91e91f525ed7,3189
-    pantry-tree:
-      size: 510
-      sha256: 68e2d25618d8f791d780369ba2237119acc597f6964ec00e11dbf0c796f10c1e
-  original:
-    hackage: distributed-process-simplelocalnet-0.2.4@sha256:044a003f81a648f9fb9b1c7ae9cd8f753f5f1c32d9db5ff8b31e91e91f525ed7,3189
-- completed:
-    hackage: network-2.6.3.6@sha256:24309791341db9cd96d8864f7fab2e7a1c5d97625f1cdd34d497c73eee5c82ca,2683
-    pantry-tree:
-      size: 2254
-      sha256: 78bb6409dc43f863ce8da01269b7dd96fa5838da521ffad8ce594c2da53eea52
-  original:
-    hackage: network-2.6.3.6@sha256:24309791341db9cd96d8864f7fab2e7a1c5d97625f1cdd34d497c73eee5c82ca,2683
-- completed:
-    hackage: network-transport-tcp-0.6.1@sha256:04cf5c191eb2b93b2941027840e26ed47ab76a68e37ec958ed0feeefa285da86,3399
-    pantry-tree:
-      size: 651
-      sha256: 47e83b8a3283d80a5d646d7298a70b0488d036515ac4ba7432b41f2d225de1de
-  original:
-    hackage: network-transport-tcp-0.6.1@sha256:04cf5c191eb2b93b2941027840e26ed47ab76a68e37ec958ed0feeefa285da86,3399
+packages: []
 snapshots:
 - completed:
-    size: 509471
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/12/26.yaml
-    sha256: 95f014df58d0679b1c4a2b7bf2b652b61da8d30de5f571abb0d59015ef678646
-  original: lts-12.26
+    sha256: 32716534fff554b7f90762130fdb985cabf29f157758934dd1c8f3892a646430
+    size: 586103
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/19.yaml
+  original: lts-18.19
