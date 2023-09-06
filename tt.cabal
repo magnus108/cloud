@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.2.
+-- This file has been generated from package.yaml by hpack version 0.32.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f92a30f1e1a917d780f64d54589fcc8de7007e818f19126c067b8db5cebc5718
+-- hash: 0d8aba30b9dfc62b0cacbd2d1567c08bbb89fd95177bd07fa2d303d5ad64fc02
 
 name:           tt
 version:        0.1.0.0
@@ -38,7 +38,7 @@ library
       base >=4.7 && <5
     , binary
     , distributed-process
-    , distributed-process-simplelocalnet ==0.2.*
+    , distributed-process-simplelocalnet
     , distributed-static
     , network
     , network-transport
@@ -57,7 +57,7 @@ executable tt-exe
       base >=4.7 && <5
     , binary
     , distributed-process
-    , distributed-process-simplelocalnet ==0.2.*
+    , distributed-process-simplelocalnet
     , distributed-static
     , network
     , network-transport
@@ -78,7 +78,7 @@ test-suite tt-test
       base >=4.7 && <5
     , binary
     , distributed-process
-    , distributed-process-simplelocalnet ==0.2.*
+    , distributed-process-simplelocalnet
     , distributed-static
     , network
     , network-transport

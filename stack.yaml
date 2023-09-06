@@ -17,7 +17,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-18.19
+resolver: lts-12.26
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -39,11 +39,12 @@ packages:
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
-#extra-deps: 
-  #- distributed-process-0.7.4@sha256:9e43cb9a27e976e3e4c054e783bdfbd6140760e70997448da66993f4674a6409,7577
-  #- distributed-process-simplelocalnet-0.2.4@sha256:044a003f81a648f9fb9b1c7ae9cd8f753f5f1c32d9db5ff8b31e91e91f525ed7,3189
-  #- network-2.6.3.6@sha256:24309791341db9cd96d8864f7fab2e7a1c5d97625f1cdd34d497c73eee5c82ca,2683
-  #- network-transport-tcp-0.6.1@sha256:04cf5c191eb2b93b2941027840e26ed47ab76a68e37ec958ed0feeefa285da86,3399
+extra-deps: 
+- distributed-process-0.7.4@sha256:9e43cb9a27e976e3e4c054e783bdfbd6140760e70997448da66993f4674a6409,7577
+- distributed-process-simplelocalnet-0.2.4@sha256:044a003f81a648f9fb9b1c7ae9cd8f753f5f1c32d9db5ff8b31e91e91f525ed7,3189
+- network-2.6.3.6@sha256:24309791341db9cd96d8864f7fab2e7a1c5d97625f1cdd34d497c73eee5c82ca,2683
+- network-transport-tcp-0.6.1@sha256:04cf5c191eb2b93b2941027840e26ed47ab76a68e37ec958ed0feeefa285da86,3399
+
 
 
 
