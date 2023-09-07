@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0d8aba30b9dfc62b0cacbd2d1567c08bbb89fd95177bd07fa2d303d5ad64fc02
+-- hash: c70b647afc2d324fcd6501d1d5d40513b199a37be43562a3f8c996333f1528bd
 
 name:           tt
 version:        0.1.0.0
@@ -29,6 +29,8 @@ library
   exposed-modules:
       DistribUtils
       Lib
+      Lib2
+      Simple
   other-modules:
       Paths_tt
   hs-source-dirs:
@@ -37,6 +39,7 @@ library
   build-depends:
       base >=4.7 && <5
     , binary
+    , bytestring
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static
@@ -56,6 +59,7 @@ executable tt-exe
   build-depends:
       base >=4.7 && <5
     , binary
+    , bytestring
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static
@@ -77,6 +81,7 @@ test-suite tt-test
   build-depends:
       base >=4.7 && <5
     , binary
+    , bytestring
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static

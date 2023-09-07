@@ -1,7 +1,7 @@
 {-# LANGUAGE TemplateHaskell, DeriveDataTypeable, DeriveGeneric #-}
 {-# OPTIONS_GHC -Wall #-}
 module Lib
-    ( someFunc
+    ( --someFunc
     ) where
 
 import Control.Distributed.Process hiding (Message)
@@ -54,6 +54,6 @@ master = do
 -- >>
 
 -- <<main
-someFunc :: IO ()
-someFunc = distribMain (\_ -> master) Lib.__remoteTable
+--someFunc :: IO ()
+--someFunc = distribMain (\_ -> master) Lib.__remoteTable
 -- >>

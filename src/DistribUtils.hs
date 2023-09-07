@@ -19,6 +19,7 @@ distribMain master frtable = do
 
   case args of
     [] -> do
+      putStrLn "master"
       backend <- initializeBackend defaultHost defaultPort rtable
       startMaster backend master
     [ "master" ] -> do
@@ -31,11 +32,12 @@ distribMain master frtable = do
       backend <- initializeBackend defaultHost defaultPort rtable
       startSlave backend
     [ "slave", port ] -> do
+      putStrLn "slave"
       backend <- initializeBackend defaultHost port rtable
       startSlave backend
     [ "slave", host, port ] -> do
       backend <- initializeBackend host port rtable
       startSlave backend
 
-defaultHost = "localhost"
-defaultPort = "44444"
+defaultHost = "127.0.0.1"
+defaultPort = "8000"

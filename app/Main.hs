@@ -1,8 +1,6 @@
 module Main (main) where
 
-import Lib
+import qualified Lib2
 
 main :: IO ()
-main = do
-	putStrLn "huh"
-	someFunc
+main = Lib2.main
