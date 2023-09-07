@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c70b647afc2d324fcd6501d1d5d40513b199a37be43562a3f8c996333f1528bd
+-- hash: 3af7cbc4162437c634effa3227abc697d748ef9b3c698537a18b15e6eaa2398a
 
 name:           tt
 version:        0.1.0.0
@@ -31,6 +31,7 @@ library
       Lib
       Lib2
       Simple
+      TCPing
   other-modules:
       Paths_tt
   hs-source-dirs:

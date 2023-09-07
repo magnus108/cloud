@@ -1,6 +1,6 @@
 module Main (main) where
 
-import qualified Lib2
+import qualified TCPing
 
 main :: IO ()
-main = Lib2.main
+main = TCPing.main
