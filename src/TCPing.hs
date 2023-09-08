@@ -40,17 +40,17 @@ master :: [NodeId] -> Process ()
 master peers = do
 
   ps <- forM peers $ \nid -> do
-	  (pongPort,getPing) <- newChan 
-          p <- spawn nid ($(mkClosure 'pingServer) pongPort) --start process der svarer her
-	  return (p, getPing)
+	  (givePingPort, getPingPort) <- newChan ---- lav kanal der kan smides ping port på
+          p <- spawn nid ($(mkClosure 'pingServer) givePingPort) -- giv kanal der kan smides ping port på
+	  return (p, getPingPort)
 
-  forM_ ps $ \(pid, getPing)-> do                              -- <3>
+  forM_ ps $ \(pid, getPingPort)-> do          
     	say $ printf "pinging %s" (show pid)
- 	pingPort <- receiveChan getPing -- fa svar fra process med hvor man skal spørge med ping
-        (sendPong, recvPong) <- newChan :: Process (SendPort (), ReceivePort ())-- lav kanal til at sende ping 
-	sendChan pingPort sendPong  -- send ping til process med hvor maan skal svare med pong
+ 	pingPort <- receiveChan getPingPort -- få ping port
+        (sendPongPort, getPong) <- newChan -- lav kanal der kan sendes pong på
+	sendChan pingPort sendPongPort -- send ping med kanal der kan pongew på
     	say $ printf "got pong" 
-        receiveChan recvPong -- få svar med pong
+        receiveChan getPong :: Process ()-- få pong
 
   say "All pongs successfully received"
   terminate
