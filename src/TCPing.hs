@@ -15,17 +15,20 @@ import Data.Typeable
 import DistribUtils
 
 -- <<Message
-data Message = Ping (SendPort ProcessId)
-  deriving (Typeable, Generic)
+type PingPort = SendPort (SendPort ())
+type PongPort = SendPort PingPort
 
-instance Binary Message
 -- >>
 
 -- <<pingServer
-pingServer :: SendPort ProcessId -> Process ()
-pingServer s = do
-  mypid <- getSelfPid
-  sendChan s mypid
+pingServer :: PongPort -> Process ()
+pingServer pongPort = do
+  (pingPort, getPong) <- newChan 
+  sendChan pongPort pingPort
+  say $ printf "expecting on ping" 
+  x <- receiveChan getPong
+  sendChan x ()
+  return ()
 -- >>
 
 -- <<remotable
@@ -37,15 +40,17 @@ master :: [NodeId] -> Process ()
 master peers = do
 
   ps <- forM peers $ \nid -> do
-          say $ printf "spawning on %s" (show nid)
-	  (s,r) <- newChan
-          spawn nid ($(mkClosure 'pingServer) s)
+	  (pongPort,getPing) <- newChan 
+          p <- spawn nid ($(mkClosure 'pingServer) pongPort) --start process der svarer her
+	  return (p, getPing)
 
-	  ping <- receiveChan r
-
-          (sendPong, recvPong) <- newChan
-	  sendChan ping (Ping sendPong)
-          receiveChan recvPong
+  forM_ ps $ \(pid, getPing)-> do                              -- <3>
+    	say $ printf "pinging %s" (show pid)
+ 	pingPort <- receiveChan getPing -- fa svar fra process med hvor man skal spørge med ping
+        (sendPong, recvPong) <- newChan :: Process (SendPort (), ReceivePort ())-- lav kanal til at sende ping 
+	sendChan pingPort sendPong  -- send ping til process med hvor maan skal svare med pong
+    	say $ printf "got pong" 
+        receiveChan recvPong -- få svar med pong
 
   say "All pongs successfully received"
   terminate
