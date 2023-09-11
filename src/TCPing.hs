@@ -15,19 +15,23 @@ import Data.Typeable
 import DistribUtils
 
 -- <<Message
-type PingPort = SendPort (SendPort ())
-type PongPort = SendPort PingPort
+data Ping = Ping (SendPort Pong)
+  deriving (Typeable, Generic)          -- <1>
+instance Binary Ping                 -- <2>
 
--- >>
+data Pong = Pong
+  deriving (Typeable, Generic)          -- <1>
 
+instance Binary Pong                 -- <2>
+{-
 -- <<pingServer
-pingServer :: PongPort -> Process ()
-pingServer pongPort = do
-  (pingPort, getPong) <- newChan 
-  sendChan pongPort pingPort
+pingServer :: SendPort Ping -> Process ()
+pingServer givePingPort = do
+  (pingPort, getPing) <- newChan 
+  sendChan givePingPort pingPort --her kan du pinge
   say $ printf "expecting on ping" 
-  x <- receiveChan getPong
-  sendChan x ()
+  (Ping ping) <- receiveChan getPing -- vent på ping
+  sendChan ping Pong --få ping send pong
   return ()
 -- >>
 
@@ -50,13 +54,14 @@ master peers = do
         (sendPongPort, getPong) <- newChan -- lav kanal der kan sendes pong på
 	sendChan pingPort sendPongPort -- send ping med kanal der kan pongew på
     	say $ printf "got pong" 
-        receiveChan getPong :: Process ()-- få pong
+        receiveChan getPong 
+	return ()
 
   say "All pongs successfully received"
   terminate
 -- >>
-
+-}
 -- <<main
 main :: IO ()
-main = distribMain master __remoteTable
+main = undefined --distribMain master __remoteTable
 -- >>

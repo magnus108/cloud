@@ -1,6 +1,6 @@
 module Main (main) where
 
-import qualified TCPing
+import qualified Db
 
 main :: IO ()
-main = TCPing.main
+main = Db.main

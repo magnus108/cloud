@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3af7cbc4162437c634effa3227abc697d748ef9b3c698537a18b15e6eaa2398a
+-- hash: 172dfea3d2fd9b3c02d2ab4f86cd0f78a39266211a47d3b9cf7b3d95e0d94fed
 
 name:           tt
 version:        0.1.0.0
@@ -27,11 +27,14 @@ source-repository head
 
 library
   exposed-modules:
+      Database
+      Db
       DistribUtils
       Lib
       Lib2
       Simple
       TCPing
+      WorkerSample
   other-modules:
       Paths_tt
   hs-source-dirs:
@@ -41,6 +44,7 @@ library
       base >=4.7 && <5
     , binary
     , bytestring
+    , containers
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static
@@ -61,6 +65,7 @@ executable tt-exe
       base >=4.7 && <5
     , binary
     , bytestring
+    , containers
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static
@@ -83,6 +88,7 @@ test-suite tt-test
       base >=4.7 && <5
     , binary
     , bytestring
+    , containers
     , distributed-process
     , distributed-process-simplelocalnet
     , distributed-static

@@ -30,6 +30,7 @@ dependencies:
 - binary
 - template-haskell
 - bytestring
+- containers
 
 ghc-options:
 - -Wall
